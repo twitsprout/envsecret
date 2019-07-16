@@ -20,7 +20,7 @@ func TestVault_Get(t *testing.T) {
 	}{
 		{
 			name: "happy path",
-			id:   "/secret/data/identifier",
+			id:   "secret/data/hello",
 			expected: map[string]interface{}{
 				"key": "value",
 			},
@@ -33,21 +33,27 @@ func TestVault_Get(t *testing.T) {
 				Address: endpoint,
 			})
 			if err != nil {
-				t.Error(err)
-				t.FailNow()
+				t.Fatal(err)
 			}
 
 			client.SetToken(os.Getenv("VAULT_DEV_ROOT_TOKEN_ID"))
 
-			if _, err := client.Logical().Write(test.id, test.expected); err != nil {
-				t.Error(err)
-				t.FailNow()
+			wrapped := map[string]interface{}{
+				"data": test.expected,
+			}
+			if _, err := client.Logical().Write(test.id, wrapped); err != nil {
+				t.Fatal(err)
 			}
 
 			subject := secretstore.New(client)
 
-			actual, err := subject.Get(test.id)
+			response, err := subject.Get(test.id)
 			assert.NoError(t, err)
+
+			actual, present := response["data"]
+			if !present {
+				t.Fatal("missing secret data")
+			}
 			assert.Equal(t, test.expected, actual)
 		})
 	}

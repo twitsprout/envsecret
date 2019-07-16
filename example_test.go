@@ -11,13 +11,13 @@ import (
 )
 
 func init() {
-	os.Setenv("APP_DEBUG", "true")
-	os.Setenv("AWS_REGION", "us-west-2")
-	os.Setenv("APP_SOME_SECRET", "somesecret-name-in-aws")
-	os.Setenv("APP_REQUIRED_SECRET", "requiredsecret-name-in-aws")
-	os.Setenv("APP_ANOTHER_SECRET", "somesecret-name-in-aws")
-	os.Setenv("APP_PUBLIC_KEY", "mykeypair")
-	os.Setenv("APP_CREDENTIALS", "database-credentials-123")
+	_ = os.Setenv("APP_DEBUG", "true")
+	_ = os.Setenv("AWS_REGION", "us-west-2")
+	_ = os.Setenv("APP_SOME_SECRET", "somesecret-name-in-aws")
+	_ = os.Setenv("APP_REQUIRED_SECRET", "requiredsecret-name-in-aws")
+	_ = os.Setenv("APP_ANOTHER_SECRET", "somesecret-name-in-aws")
+	_ = os.Setenv("APP_PUBLIC_KEY", "mykeypair")
+	_ = os.Setenv("APP_CREDENTIALS", "database-credentials-123")
 }
 
 // config is a specification struct for environment secrets.

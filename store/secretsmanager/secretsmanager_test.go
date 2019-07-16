@@ -19,8 +19,8 @@ const (
 )
 
 func TestSecretsManager_Get(t *testing.T) {
-	os.Setenv("AWS_ACCESS_KEY_ID", "bogus")
-	os.Setenv("AWS_SECRET_ACCESS_KEY", "bogus")
+	_ = os.Setenv("AWS_ACCESS_KEY_ID", "bogus")
+	_ = os.Setenv("AWS_SECRET_ACCESS_KEY", "bogus")
 
 	var (
 		awsConfig = aws.NewConfig().

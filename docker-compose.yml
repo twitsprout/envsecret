@@ -20,3 +20,5 @@ services:
     image: vault
     environment:
       - VAULT_DEV_ROOT_TOKEN_ID=testroot
+    cap_add:
+      - IPC_LOCK
