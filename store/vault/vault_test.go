@@ -20,7 +20,7 @@ func TestVault_Get(t *testing.T) {
 	}{
 		{
 			name: "happy path",
-			id:   "secret/data/hello",
+			id:   "secret/data/happy_path",
 			expected: map[string]interface{}{
 				"key": "value",
 			},

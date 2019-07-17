@@ -50,7 +50,7 @@ func Process(spec interface{}, store Store) error {
 			continue
 		}
 
-		required := (field.Tag.Get("required") == "true")
+		required := field.Tag.Get("required") == "true"
 
 		if secret := secretFrom(V.Field(i)); secret != nil {
 			if secret.ID() == "" {

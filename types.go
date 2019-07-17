@@ -33,8 +33,8 @@ func NewBase(id string) Base {
 // Decode implements envconfig.Decoder and populates id.
 func (s *Base) Decode(value string) error { s.id = value; return nil }
 
-// ID returns the id of the secret, which can be an AWS ARN or the configured name of the secret. The latter
-// is probably preferred for both readability and security (since it doesn't expose AWS Account ID, etc.)
+// ID returns the secret's identifier in the secret store being used,
+// e.g. an ARN if using AWS Secrets Manager or a Vault secret path.
 func (s *Base) ID() string { return s.id }
 
 // String is a general purpose secret and holds a single string value.
