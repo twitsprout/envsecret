@@ -50,13 +50,9 @@ func NewString(id string) String {
 
 // Decode implements Secret and populates Key with the secret string.
 func (s *String) Decode(secrets map[string]interface{}) error {
-	fmt.Println("decode", secrets)
 	if s.Value = find(secrets, "value"); s.Value == "" {
-		fmt.Println(s.Value)
-		fmt.Println("ERROR")
 		return errors.New("finding secret in map")
 	}
-	fmt.Println(s.Value)
 	return nil
 }
 
