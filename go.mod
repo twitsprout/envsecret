@@ -1,4 +1,4 @@
-module github.com/gavincabbage/envsecret
+module github.com/twitsprout/envsecret
 
 go 1.12
 
